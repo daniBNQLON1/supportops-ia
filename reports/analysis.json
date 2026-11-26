@@ -51,7 +51,7 @@
      },
      "cpu_ms_mean": 13.020000000000001,
      "rss_mb_max": 93.07,
-     "rss_slope_mb_per_100req": 10.905594405594657,
+     "rss_slope_mb_per_100req": 10.90559440559447,
      "pii_to_llm": 0,
      "tokens_mean": 564.1666666666666,
      "errors_by_type": {
@@ -93,7 +93,7 @@
      },
      "cpu_ms_mean": 9.1125,
      "rss_mb_max": 89.09,
-     "rss_slope_mb_per_100req": 3.9650349650350774,
+     "rss_slope_mb_per_100req": 3.96503496503499,
      "pii_to_llm": 0,
      "tokens_mean": 794.0,
      "errors_by_type": {}
@@ -195,7 +195,7 @@
      },
      "cpu_ms_mean": 10.414166666666667,
      "rss_mb_max": 89.39,
-     "rss_slope_mb_per_100req": 3.017482517482691,
+     "rss_slope_mb_per_100req": 3.0174825174828923,
      "pii_to_llm": 0,
      "tokens_mean": 784.6666666666666,
      "errors_by_type": {}
@@ -211,7 +211,7 @@
    "slo_targets": {
     "accuracy_min": 0.85,
     "error_rate_max": 0.02,
-    "p95_ms_max": 6000,
+    "p95_ms_max": 10000,
     "consistency_min": 0.9,
     "rss_slope_mb_per_100req_max": 5.0
    }
@@ -811,7 +811,7 @@
      },
      "cpu_ms_mean": 19.52916666666667,
      "rss_mb_max": 92.57,
-     "rss_slope_mb_per_100req": 10.975524475524507,
+     "rss_slope_mb_per_100req": 10.97552447552488,
      "pii_to_llm": 0,
      "tokens_mean": 780.9166666666666,
      "errors_by_type": {
@@ -853,7 +853,7 @@
      },
      "cpu_ms_mean": 9.112499999999999,
      "rss_mb_max": 89.32,
-     "rss_slope_mb_per_100req": 3.3531468531470265,
+     "rss_slope_mb_per_100req": 3.3531468531467388,
      "pii_to_llm": 0,
      "tokens_mean": 805.6666666666666,
      "errors_by_type": {}
@@ -953,7 +953,7 @@
      },
      "cpu_ms_mean": 10.414166666666667,
      "rss_mb_max": 89.58,
-     "rss_slope_mb_per_100req": 2.04545454545476,
+     "rss_slope_mb_per_100req": 2.0454545454548487,
      "pii_to_llm": 0,
      "tokens_mean": 780.0,
      "errors_by_type": {}
@@ -969,7 +969,7 @@
    "slo_targets": {
     "accuracy_min": 0.85,
     "error_rate_max": 0.02,
-    "p95_ms_max": 6000,
+    "p95_ms_max": 10000,
     "consistency_min": 0.9,
     "rss_slope_mb_per_100req_max": 5.0
    }

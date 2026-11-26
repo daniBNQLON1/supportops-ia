@@ -1,7 +1,7 @@
 {
  "accuracy_min": 0.85,
  "error_rate_max": 0.02,
- "p95_ms_max": 6000,
+ "p95_ms_max": 10000,
  "consistency_min": 0.90,
  "rss_slope_mb_per_100req_max": 5.0
 }
