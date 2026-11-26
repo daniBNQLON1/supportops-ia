@@ -1,0 +1,33 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\danie\AppData\Local\Programs\Python\Python312\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\danie\Documents\agent-observability
+plugins: anyio-4.16.0, langsmith-0.16.2
+collecting ... collected 23 items
+
+tests/test_observability.py::test_mask_pii PASSED                        [  4%]
+tests/test_observability.py::test_injection_detection PASSED             [  8%]
+tests/test_observability.py::test_tracer_never_stores_raw_input PASSED   [ 13%]
+tests/test_observability.py::test_error_is_logged_and_reraised PASSED    [ 17%]
+tests/test_observability.py::test_metrics_basic PASSED                   [ 21%]
+tests/test_observability.py::test_agent_blocks_injection_and_answers PASSED [ 26%]
+tests/test_observability.py::test_optimized_pii_not_sent_to_llm PASSED   [ 30%]
+tests/test_real_agent.py::test_answer_and_tokens PASSED                  [ 34%]
+tests/test_real_agent.py::test_no_info_falls_back PASSED                 [ 39%]
+tests/test_real_agent.py::test_retry_on_429_only_when_optimized PASSED   [ 43%]
+tests/test_real_agent.py::test_pii_masked_only_when_optimized PASSED     [ 47%]
+tests/test_real_agent.py::test_injection_blocked_without_llm_call PASSED [ 52%]
+tests/test_real_agent.py::test_openai_compat_provider PASSED             [ 56%]
+tests/test_supportops.py::test_tracer_tool_expectations PASSED           [ 60%]
+tests/test_supportops.py::test_handler_builds_spans_and_tokens PASSED    [ 65%]
+tests/test_supportops.py::test_guardrail_blocks_before_llm PASSED        [ 69%]
+tests/test_supportops.py::test_pii_masked_only_in_optimized PASSED       [ 73%]
+tests/test_supportops.py::test_dataset_shapes PASSED                     [ 78%]
+tests/test_supportops.py::test_tools_race_fix PASSED                     [ 82%]
+tests/test_supportops.py::test_failed_tool_attempt_is_not_a_success PASSED [ 86%]
+tests/test_supportops.py::test_priority_normalization_and_missing_fields PASSED [ 91%]
+tests/test_supportops.py::test_rejected_tool_is_not_a_success PASSED     [ 95%]
+tests/test_supportops.py::test_injection_notool_counts_blocked_as_correct PASSED [100%]
+
+- generated xml file: C:\Users\danie\Documents\agent-observability\reports\pytest_results.xml -
+============================= 23 passed in 1.60s ==============================
