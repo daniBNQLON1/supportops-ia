@@ -1,0 +1,10 @@
+{
+ "llamadas_exitosas_registrar_ticket": 50,
+ "tickets_en_archivo": 50,
+ "ids_unicos": 49,
+ "tickets_perdidos": 0,
+ "ids_duplicados": 1,
+ "pii_en_tickets": 2,
+ "tickets_datos_invalidos": 1,
+ "prioridad_no_estandar": 2
+}

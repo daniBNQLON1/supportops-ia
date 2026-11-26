@@ -1,0 +1,402 @@
+[
+    {
+        "ticket_id": "TCK-20261126033756",
+        "usuario": "Juan Pérez",
+        "departamento": "Marketing",
+        "descripcion": "Se me rompió la pantalla del notebook",
+        "prioridad": "Media",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033800",
+        "usuario": "Ana Soto",
+        "departamento": "Finanzas",
+        "descripcion": "no puedo conectarme a la VPN desde mi casa",
+        "prioridad": "Alta",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033804",
+        "usuario": "Luis Rojas",
+        "departamento": "Ventas",
+        "descripcion": "mouse dejó de funcionar",
+        "prioridad": "Baja",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033808",
+        "usuario": "Camila Díaz",
+        "departamento": "RRHH",
+        "descripcion": "Mi impresora no imprime desde ayer",
+        "prioridad": "Media",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033812",
+        "usuario": "Pedro Núñez",
+        "departamento": "Operaciones",
+        "descripcion": "mi computador se reinicia solo",
+        "prioridad": "Alta",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033816",
+        "usuario": "Sofía Vera",
+        "departamento": "Contabilidad",
+        "descripcion": "instalar Excel en mi equipo nuevo",
+        "prioridad": "Baja",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033820",
+        "usuario": "Juan Pérez",
+        "departamento": "Marketing",
+        "descripcion": "Se me rompió la pantalla del notebook",
+        "prioridad": "Media",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033824",
+        "usuario": "Ana Soto",
+        "departamento": "Finanzas",
+        "descripcion": "no puedo conectarme a la VPN desde mi casa",
+        "prioridad": "Alta",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033828",
+        "usuario": "Luis Rojas",
+        "departamento": "Ventas",
+        "descripcion": "mouse dejó de funcionar",
+        "prioridad": "Baja",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033832",
+        "usuario": "Camila Díaz",
+        "departamento": "RRHH",
+        "descripcion": "Mi impresora no imprime desde ayer",
+        "prioridad": "Media",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033836",
+        "usuario": "Pedro Núñez",
+        "departamento": "Operaciones",
+        "descripcion": "mi computador se reinicia solo",
+        "prioridad": "Alta",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033840",
+        "usuario": "Sofía Vera",
+        "departamento": "Contabilidad",
+        "descripcion": "instalar Excel en mi equipo nuevo",
+        "prioridad": "Baja",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033844",
+        "usuario": "Juan Pérez",
+        "departamento": "Marketing",
+        "descripcion": "Se me rompió la pantalla del notebook",
+        "prioridad": "Media",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033848",
+        "usuario": "Ana Soto",
+        "departamento": "Finanzas",
+        "descripcion": "no puedo conectarme a la VPN desde mi casa",
+        "prioridad": "Alta",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033852",
+        "usuario": "Luis Rojas",
+        "departamento": "Ventas",
+        "descripcion": "mouse dejó de funcionar",
+        "prioridad": "Baja",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033856",
+        "usuario": "Camila Díaz",
+        "departamento": "RRHH",
+        "descripcion": "Mi impresora no imprime desde ayer",
+        "prioridad": "Media",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033900",
+        "usuario": "Pedro Núñez",
+        "departamento": "Operaciones",
+        "descripcion": "mi computador se reinicia solo",
+        "prioridad": "Alta",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033904",
+        "usuario": "Sofía Vera",
+        "departamento": "Contabilidad",
+        "descripcion": "instalar Excel en mi equipo nuevo",
+        "prioridad": "Baja",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033908",
+        "usuario": "?",
+        "departamento": "?",
+        "descripcion": "se me rompió la pantalla del notebook",
+        "prioridad": "?",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033912",
+        "usuario": "Juan Pérez",
+        "departamento": "Marketing",
+        "descripcion": "se me rompió la pantalla del notebook",
+        "prioridad": "Media",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033919",
+        "usuario": "Ana Soto",
+        "departamento": "Finanzas",
+        "descripcion": "No puedo conectarme a la VPN desde mi casa, me sale error de autenticación.",
+        "prioridad": "Alta",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033927",
+        "usuario": "Luis Rojas",
+        "departamento": "Ventas",
+        "descripcion": "Mi teclado dejó de responder desde esta mañana.",
+        "prioridad": "Baja",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033934",
+        "usuario": "Camila Díaz",
+        "departamento": "RRHH",
+        "descripcion": "La impresora de mi oficina no imprime desde ayer.",
+        "prioridad": "Media",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033941",
+        "usuario": "Pedro Núñez",
+        "departamento": "Operaciones",
+        "descripcion": "Mi computador está muy lento y se congela al abrir programas.",
+        "prioridad": "Alta",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126033949",
+        "usuario": "Sofía Vera",
+        "departamento": "Contabilidad",
+        "descripcion": "Instalar Excel en mi equipo nuevo",
+        "prioridad": "Baja",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034059",
+        "usuario": "Juan Pérez",
+        "departamento": "Marketing",
+        "descripcion": "Se me rompió la pantalla del notebook",
+        "prioridad": "Media",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034105",
+        "usuario": "Ana Soto",
+        "departamento": "Finanzas",
+        "descripcion": "no puedo conectarme a la VPN desde mi caa",
+        "prioridad": "Alta",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034111",
+        "usuario": "Luis Rjoas",
+        "departamento": "Vnetas",
+        "descripcion": "el mouse dejó de funcionar",
+        "prioridad": "Baja",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034117",
+        "usuario": "Camila Díaz",
+        "departamento": "RRHH",
+        "descripcion": "Mi impresora no imprime desde ayer",
+        "prioridad": "Media",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034124",
+        "usuario": "Pedro Núñez",
+        "departamento": "Operaciones",
+        "descripcion": "mi computador se reinicia sloo",
+        "prioridad": "Alta",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034129",
+        "usuario": "Sofía Vera",
+        "departamento": "Contabilidad",
+        "descripcion": "necesito instalar Excel en mi equipo nuevo",
+        "prioridad": "Bja",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034136",
+        "usuario": "Juan Pérez",
+        "departamento": "Marketing",
+        "descripcion": "Se me rompió la pantalla del notebook",
+        "prioridad": "Media",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034147",
+        "usuario": "Ana Soto",
+        "departamento": "Finanzas",
+        "descripcion": "no puedo conectarme a la VPN desde mi casa",
+        "prioridad": "Alta",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034203",
+        "usuario": "Luis Rojas",
+        "departamento": "Ventas",
+        "descripcion": "Mouse dejó de funcionar",
+        "prioridad": "Baja",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034222",
+        "usuario": "Camila Díaz",
+        "departamento": "RRHH",
+        "descripcion": "Mi impresora no imprime desde ayer",
+        "prioridad": "Media",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034249",
+        "usuario": "Juan Pérez",
+        "departamento": "Marketing",
+        "descripcion": "Se me rompió la pantalla del notebook",
+        "prioridad": "Media",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034253",
+        "usuario": "Ana Soto",
+        "departamento": "Finanzas",
+        "descripcion": "No puedo conectarme a la VPN desde mi casa",
+        "prioridad": "Alta",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034301",
+        "usuario": "juan@mail.com",
+        "departamento": "Ventas",
+        "descripcion": "el mouse dejó de funcionar",
+        "prioridad": "Baja",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034305",
+        "usuario": "Camila Díaz",
+        "departamento": "RRHH",
+        "descripcion": "Mi impresora no imprime desde ayer",
+        "prioridad": "Media",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034317",
+        "usuario": "Pedro Núñez",
+        "departamento": "Operaciones",
+        "descripcion": "mi computador se reinicia solo",
+        "prioridad": "Alta",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034328",
+        "usuario": "maria.g@empresa.cl",
+        "departamento": "Contabilidad",
+        "descripcion": "necesito instalar Excel en mi equipo nuevo",
+        "prioridad": "Baja",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034335",
+        "usuario": "Juan Pérez",
+        "departamento": "Marketing",
+        "descripcion": "Se me rompió la pantalla del notebook",
+        "prioridad": "Media",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034335",
+        "usuario": "Camila Díaz",
+        "departamento": "RRHH",
+        "descripcion": "Mi impresora no imprime desde ayer",
+        "prioridad": "Media",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034336",
+        "usuario": "Pedro Núñez",
+        "departamento": "Operaciones",
+        "descripcion": "mi computador se reinicia solo",
+        "prioridad": "Alta",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034342",
+        "usuario": "Ana Soto",
+        "departamento": "Finanzas",
+        "descripcion": "no puedo conectarme a la VPN desde mi casa",
+        "prioridad": "Alta",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034343",
+        "usuario": "Ana Soto",
+        "departamento": "Finanzas",
+        "descripcion": "no puedo conectarme a la VPN desde mi casa",
+        "prioridad": "Alta",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034347",
+        "usuario": "Luis Rojas",
+        "departamento": "Ventas",
+        "descripcion": "mouse dejó de funcionar",
+        "prioridad": "Baja",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034352",
+        "usuario": "Juan Pérez",
+        "departamento": "Marketing",
+        "descripcion": "Se me rompió la pantalla del notebook",
+        "prioridad": "Media",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034353",
+        "usuario": "Pedro Núñez",
+        "departamento": "Operaciones",
+        "descripcion": "mi computador se reinicia solo",
+        "prioridad": "Alta",
+        "estado": "Abierto"
+    },
+    {
+        "ticket_id": "TCK-20261126034356",
+        "usuario": "Sofía Vera",
+        "departamento": "Contabilidad",
+        "descripcion": "instalar Excel en mi equipo nuevo",
+        "prioridad": "Baja",
+        "estado": "Abierto"
+    }
+]

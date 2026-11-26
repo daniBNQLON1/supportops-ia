@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Observabilidad del Agente</title>
+<style>
+:root{color-scheme:light;--bg:#f6f6f4;--surface:#fff;--ink:#191919;--ink2:#666;--line:#e3e3df;--base:#f47230;--opt:#257de0;--ok:#0a6b1f;--bad:#b3261e}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){color-scheme:dark;--bg:#111;--surface:#191919;--ink:#efefef;--ink2:#9c9c9c;--line:#2e2e2e;--base:#e76624;--opt:#338ced;--ok:#5fd07a;--bad:#ff8a80}}
+:root[data-theme=dark]{color-scheme:dark;--bg:#111;--surface:#191919;--ink:#efefef;--ink2:#9c9c9c;--line:#2e2e2e;--base:#e76624;--opt:#338ced;--ok:#5fd07a;--bad:#ff8a80}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,sans-serif}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:22px;margin:0}h2{font-size:15px;margin:0 0 2px}.sub{color:var(--ink2);font-size:12px;margin:0 0 10px}
+header{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-bottom:14px}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+select,button{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;cursor:pointer}
+.seg button{border-radius:0}.seg button:first-child{border-radius:8px 0 0 8px}.seg button:last-child{border-radius:0 8px 8px 0}.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.demo{background:var(--surface);border:1px dashed var(--bad);border-radius:8px;padding:6px 10px;font-size:12px;color:var(--ink2);margin-bottom:14px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;min-width:0}
+.kpis{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin-bottom:14px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}
+.kpi .l{color:var(--ink2);font-size:12px}.kpi .v{font-size:24px;font-weight:600}.kpi .r{font-size:12px;color:var(--ink2)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+.pass{color:var(--ok)}.fail{color:var(--bad)}
+svg{width:100%;height:auto;display:block}svg text{fill:var(--ink2);font-size:11px}svg .g{stroke:var(--line)}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--ink2);margin-bottom:6px}
+table{width:100%;border-collapse:collapse;font-size:12px}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--ink2);font-weight:500}
+#tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);padding:5px 8px;border-radius:6px;font-size:12px;display:none;z-index:9;max-width:260px}
+details{margin-top:6px}summary{cursor:pointer;color:var(--ink2);font-size:12px}
+.wide{grid-column:1/-1}
+</style></head><body><main>
+<header><div><h1>Observabilidad del agente de IA</h1><p class="sub" style="margin:2px 0 0">Baseline vs. optimizado · <span id="meta"></span></p></div>
+<div class="ctl"><label>Escenario <select id="sc"></select></label>
+<span class="seg" id="runseg"><button data-r="baseline">Baseline</button><button data-r="optimized">Optimizado</button></span>
+<button id="theme" aria-label="Cambiar tema">Tema</button></div></header>
+<div class="demo" id="demo">⚠ Datos generados por el <b>agente demo sintético</b>. Para su entrega, regenere con los logs de su agente real (ver README).</div>
+<div class="kpis" id="kpis"></div>
+<div class="grid">
+<section class="card"><h2>Precisión por escenario</h2><p class="sub">% de respuestas correctas vs. golden set (errores cuentan como incorrectas). SLO ≥ <span class="slo-acc"></span>%.</p><div class="legend" id="lg1"></div><div id="c_acc"></div></section>
+<section class="card"><h2>Latencia p95 por escenario (ms)</h2><p class="sub">Percentil 95 de la latencia extremo a extremo. SLO ≤ <span class="slo-p95"></span> ms.</p><div class="legend" id="lg2"></div><div id="c_p95"></div></section>
+<section class="card"><h2>Tiempo por etapa del flujo</h2><p class="sub">% del tiempo total acumulado, corrida seleccionada. Identifica el cuello de botella.</p><div id="c_step"></div></section>
+<section class="card"><h2>Memoria (RSS, MB) a lo largo de las ejecuciones</h2><p class="sub">Pendiente creciente = posible fuga. SLO ≤ 5 MB / 100 req.</p><div class="legend" id="lg3"></div><div id="c_rss"></div></section>
+<section class="card wide"><h2>Latencia por ejecución</h2><p class="sub">Cada punto es un request (corrida seleccionada, escenario filtrado). Marcas ✕ = error.</p><div id="c_lat"></div></section>
+<section class="card"><h2>Errores por etapa y tipo</h2><p class="sub">Taxonomía de fallas de la corrida seleccionada.</p><div id="t_err"></div></section>
+<section class="card"><h2>Seguridad y privacidad</h2><p class="sub">Controles verificados en los logs.</p><div id="t_sec"></div></section>
+<section class="card wide"><h2>Hallazgos derivados de los datos</h2><p class="sub">Generados automáticamente por reglas sobre las trazas (corrida seleccionada).</p><div id="t_find"></div></section>
+</div>
+<div id="tip"></div></main>
+<script>
+const D=/*DATA*/null;
+const $=s=>document.querySelector(s);let run='baseline',sc='todos';
+const COL={baseline:'var(--base)',optimized:'var(--opt)'},NAME={baseline:'Baseline',optimized:'Optimizado'};
+const fmt=(v,d=1)=>v==null||isNaN(v)?'–':v.toFixed(d);
+const tip=$('#tip');
+document.addEventListener('mousemove',e=>{const t=e.target.closest('[data-tip]');if(!t){tip.style.display='none';return}
+tip.textContent=t.dataset.tip;tip.style.display='block';tip.style.left=Math.min(e.clientX+12,innerWidth-270)+'px';tip.style.top=(e.clientY+14)+'px'});
+const scs=Object.keys(D.baseline.metrics.by_scenario);
+$('#sc').innerHTML='<option value="todos">Todos</option>'+scs.map(s=>`<option>${s}</option>`).join('');
+$('#sc').onchange=e=>{sc=e.target.value;draw()};
+document.querySelectorAll('#runseg button').forEach(b=>b.onclick=()=>{run=b.dataset.r;draw()});
+$('#theme').onclick=()=>{const r=document.documentElement,d=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);r.dataset.theme=d?'light':'dark'};
+const legend=(el,runs)=>$(el).innerHTML=runs.map(r=>`<span><i class="dot" style="background:${COL[r]}"></i>${NAME[r]}</span>`).join('');
+const M=(r,s)=>s==='todos'?D[r].metrics.global:D[r].metrics.by_scenario[s];
+
+function kpis(){const T=D.baseline.metrics.slo_targets;
+ const defs=[['Precisión',m=>fmt(100*m.accuracy)+'%',m=>m.accuracy>=T.accuracy_min,'≥ '+100*T.accuracy_min+'%'],
+ ['Tasa de error',m=>fmt(100*m.error_rate)+'%',m=>m.error_rate<=T.error_rate_max,'≤ '+100*T.error_rate_max+'%'],
+ ['Latencia p95',m=>fmt(m.latency.p95,0)+' ms',m=>m.latency.p95<=T.p95_ms_max,'≤ '+T.p95_ms_max+' ms'],
+ ['Consistencia',m=>fmt(100*m.consistency)+'%',m=>m.consistency>=T.consistency_min,'≥ '+100*T.consistency_min+'%'],
+ ['Memoria (pend.)',m=>fmt(m.rss_slope_mb_per_100req)+' MB/100',m=>m.rss_slope_mb_per_100req<=T.rss_slope_mb_per_100req_max,'≤ '+T.rss_slope_mb_per_100req_max],
+ ['PII enviada al LLM',m=>m.pii_to_llm,m=>m.pii_to_llm===0,'= 0']];
+ $('#kpis').innerHTML=defs.map(([l,f,ok,t])=>`<div class="kpi"><div class="l">${l} · SLO ${t}</div>`+
+ ['baseline','optimized'].map(r=>{const m=M(r,sc),p=ok(m);return `<div class="r"><i class="dot" style="background:${COL[r]}"></i>${NAME[r]} <b class="v" style="font-size:18px;color:var(--ink)">${f(m)}</b> <span class="${p?'pass':'fail'}">${p?'✓ cumple':'✕ no cumple'}</span></div>`}).join('')+'</div>').join('')}
+
+function groupBars(el,fn,max,unit,ref){const W=560,H=250,L=36,B=44,n=scs.length,gw=(W-L-8)/n;
+ let s=`<svg viewBox="0 0 ${W} ${H}" role="img">`;
+ for(let i=0;i<=4;i++){const y=H-B-(H-B-14)*i/4;s+=`<line class="g" x1="${L}" x2="${W}" y1="${y}" y2="${y}"/><text x="${L-5}" y="${y+4}" text-anchor="end">${fmt(max*i/4,0)}</text>`}
+ if(ref!=null){const y=H-B-(H-B-14)*ref/max;s+=`<line x1="${L}" x2="${W}" y1="${y}" y2="${y}" stroke="var(--ink2)" stroke-dasharray="4 3"/><text x="${W}" y="${y-4}" text-anchor="end">SLO</text>`}
+ scs.forEach((k,i)=>{['baseline','optimized'].forEach((r,j)=>{const v=fn(D[r].metrics.by_scenario[k]),h=(H-B-14)*Math.min(v,max)/max,x=L+i*gw+gw*.12+j*gw*.38,w=gw*.34,y=H-B-h;
+ s+=`<rect data-tip="${NAME[r]} · ${k}: ${fmt(v)}${unit}" x="${x}" y="${y}" width="${w}" height="${Math.max(h,1)}" rx="3" fill="${COL[r]}" opacity="${sc==='todos'||sc===k?1:.3}"/>`});
+ s+=`<text x="${L+i*gw+gw/2}" y="${H-B+14}" text-anchor="middle">${k.replace('_',' ')}</text>`});
+ $(el).innerHTML=s+'</svg>'}
+
+function steps(){const st=D[run].steps,W=560,rh=34,H=st.length*rh+10;let s=`<svg viewBox="0 0 ${W} ${H}">`;
+ st.forEach((r,i)=>{const y=i*rh+4,w=(W-190)*r.share_pct/100;
+ s+=`<text x="0" y="${y+16}">${r.step}</text><rect data-tip="${r.step}: ${fmt(r.share_pct)}% del tiempo · media ${fmt(r.mean_ms)} ms · p95 ${fmt(r.p95_ms)} ms · error ${fmt(100*r.error_rate)}% · reintentos ${r.retries}" x="90" y="${y+4}" width="${Math.max(w,2)}" height="18" rx="4" fill="${COL[run]}"/><text x="${96+w}" y="${y+17}">${fmt(r.share_pct,0)}% · ${fmt(r.mean_ms)} ms</text>`});
+ $('#c_step').innerHTML=s+'</svg>'}
+
+function rss(){const W=560,H=230,L=36,B=24,sr=['baseline','optimized'].map(r=>D[r].series.rss),mx=Math.ceil(Math.max(...sr.flat())/10)*10,n=Math.max(...sr.map(a=>a.length));
+ let s=`<svg viewBox="0 0 ${W} ${H}">`;for(let i=0;i<=4;i++){const y=H-B-(H-B-10)*i/4;s+=`<line class="g" x1="${L}" x2="${W}" y1="${y}" y2="${y}"/><text x="${L-5}" y="${y+4}" text-anchor="end">${fmt(mx*i/4,0)}</text>`}
+ ['baseline','optimized'].forEach((r,k)=>{const a=sr[k];s+=`<polyline fill="none" stroke="${COL[r]}" stroke-width="2" points="${a.map((v,i)=>`${L+(W-L)*i/(n-1)},${H-B-(H-B-10)*v/mx}`).join(' ')}"/>`;
+ a.forEach((v,i)=>{if(i%6===0)s+=`<circle data-tip="${NAME[r]} · req ${i+1}: ${v} MB" cx="${L+(W-L)*i/(n-1)}" cy="${H-B-(H-B-10)*v/mx}" r="7" fill="transparent"/>`})});
+ s+=`<text x="${L}" y="${H-6}">request #</text><text x="${W}" y="${H-6}" text-anchor="end">${n}</text>`;$('#c_rss').innerHTML=s+'</svg>'}
+
+function lat(){const all=D[run].series.latency.map((x,i)=>[i,...x]).filter(x=>sc==='todos'||x[2]===sc),W=1100,H=230,L=40,B=24,mx=Math.ceil(Math.max(...all.map(x=>x[1]))/50)*50||50,N=D[run].series.latency.length;
+ let s=`<svg viewBox="0 0 ${W} ${H}">`;for(let i=0;i<=4;i++){const y=H-B-(H-B-10)*i/4;s+=`<line class="g" x1="${L}" x2="${W}" y1="${y}" y2="${y}"/><text x="${L-5}" y="${y+4}" text-anchor="end">${fmt(mx*i/4,0)}</text>`}
+ all.forEach(([i,v,k,st])=>{const x=L+(W-L-6)*i/N,y=H-B-(H-B-10)*v/mx,t=`#${i+1} · ${k} · ${v} ms · ${st}`;
+ s+=st==='error'?`<path data-tip="${t}" d="M${x-4} ${y-4}l8 8m0-8l-8 8" stroke="var(--bad)" stroke-width="2"/>`:`<circle data-tip="${t}" cx="${x}" cy="${y}" r="3.2" fill="${COL[run]}" stroke="var(--surface)" stroke-width="1.5"/>`});
+ $('#c_lat').innerHTML=s+`<text x="${L}" y="${H-6}">ms · orden de ejecución →</text></svg>`}
+
+function auditRows(a){if(!a)return'';const r=(l,v,bad)=>`<tr><td>${l}</td><td class="${bad?'fail':'pass'}">${bad?'✕ ':'✓ '}${v}</td></tr>`;
+ return r('Tickets perdidos (dijo crear vs. guardados)',a.tickets_perdidos,a.tickets_perdidos>0)+r('IDs de ticket duplicados',a.ids_duplicados,a.ids_duplicados>0)+
+ (a.pii_en_tickets!=null?r('PII guardada en la base de tickets',a.pii_en_tickets,a.pii_en_tickets>0)+r('Tickets con datos inválidos (?, vacío)',a.tickets_datos_invalidos,a.tickets_datos_invalidos>0)+r('Prioridad no estándar',a.prioridad_no_estandar,a.prioridad_no_estandar>0):'')}
+function tables(){const e=D[run].errors;
+ $('#t_err').innerHTML=e.length?`<table><tr><th>Etapa</th><th>Tipo</th><th>N</th></tr>${e.map(r=>`<tr><td>${r.error_step}</td><td>${r.error_type}</td><td>${r.count}</td></tr>`).join('')}</table>`:'<p class="sub">Sin errores registrados ✓</p>';
+ const g=r=>D[r].metrics.global,inj=D[run].metrics.by_scenario.injection;
+ $('#t_sec').innerHTML=`<table><tr><th>Control</th><th>${NAME[run]}</th></tr><tr><td>Inyecciones: bloqueadas por guardrail / ejecutó algo indebido</td><td>${inj?inj.blocked+' de '+inj.n+' bloqueadas · correctas '+fmt(100*inj.accuracy,0)+'%':'–'}</td></tr>
+ <tr><td>PII enviada al proveedor LLM</td><td class="${g(run).pii_to_llm?'fail':'pass'}">${g(run).pii_to_llm?'✕ ':'✓ '}${g(run).pii_to_llm}</td></tr>
+ <tr><td>PII legible en los logs</td><td class="${D[run].pii_in_logs?'fail':'pass'}">${D[run].pii_in_logs?'✕ ':'✓ '}${D[run].pii_in_logs}</td></tr>
+ <tr><td>Entrada del usuario en logs</td><td>solo hash + largo</td></tr>${auditRows(D[run].audit)}</table>`;
+ const f=D[run].findings;$('#t_find').innerHTML=`<table><tr><th>ID</th><th>Área</th><th>Evidencia</th><th>Recomendación</th></tr>${f.map(x=>`<tr><td>${x.id}</td><td>${x.area}</td><td>${x.evidence}</td><td>${x.recommendation}</td></tr>`).join('')}</table>`}
+
+function draw(){document.querySelectorAll('#runseg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.r===run));
+ legend('#lg1',['baseline','optimized']);legend('#lg2',['baseline','optimized']);legend('#lg3',['baseline','optimized']);
+ kpis();groupBars('#c_acc',m=>100*m.accuracy,100,'%',85);groupBars('#c_p95',m=>m.latency.p95,Math.ceil(Math.max(...scs.map(k=>Math.max(D.baseline.metrics.by_scenario[k].latency.p95,D.optimized.metrics.by_scenario[k].latency.p95)))/50)*50,' ms',null);
+ steps();rss();lat();tables()}
+if(D.baseline.real)document.getElementById('demo').style.display='none';
+const T0=D.baseline.metrics.slo_targets;document.querySelectorAll('.slo-acc').forEach(e=>e.textContent=100*T0.accuracy_min);document.querySelectorAll('.slo-p95').forEach(e=>e.textContent=T0.p95_ms_max);
+$('#meta').textContent=D.baseline.metrics.global.n+' ejecuciones por corrida · '+scs.length+' escenarios';draw();
+</script></body></html>

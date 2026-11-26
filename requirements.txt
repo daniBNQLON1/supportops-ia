@@ -1,0 +1,8 @@
+pandas>=2.0
+numpy
+psutil
+matplotlib
+python-docx
+pytest
+langgraph
+langchain-groq

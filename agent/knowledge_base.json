@@ -1,0 +1,109 @@
+{
+ "institucion": "Instituto de ejemplo (REEMPLAZAR por su institución/tema)",
+ "entries": [
+  {
+   "id": 1,
+   "pregunta": "¿Cómo restablezco mi contraseña del portal?",
+   "clave": "olvidé mi clave",
+   "respuesta": "Para restablecer tu contraseña usa la opción 'olvidé mi clave' y sigue el enlace enviado a tu correo institucional.",
+   "usa_herramienta": false
+  },
+  {
+   "id": 2,
+   "pregunta": "¿Cuándo es el plazo para renovar la matrícula?",
+   "clave": "plazo de matrícula",
+   "respuesta": "El plazo de matrícula vence el último día hábil de enero; puedes pagar en línea.",
+   "usa_herramienta": false
+  },
+  {
+   "id": 3,
+   "pregunta": "¿Cómo solicito un certificado de alumno regular?",
+   "clave": "certificado de alumno regular",
+   "respuesta": "Solicita el certificado de alumno regular en Servicios en Línea; llega en 24 horas.",
+   "usa_herramienta": false
+  },
+  {
+   "id": 4,
+   "pregunta": "¿Dónde veo mi horario de clases?",
+   "clave": "horario de clases",
+   "respuesta": "Tu horario de clases está en Mi Portal > Mi horario.",
+   "usa_herramienta": false
+  },
+  {
+   "id": 5,
+   "pregunta": "¿Cómo postulo a una beca de alimentación?",
+   "clave": "beca de alimentación",
+   "respuesta": "Postula a la beca de alimentación en el formulario de Asuntos Estudiantiles antes del 30 de abril.",
+   "usa_herramienta": false
+  },
+  {
+   "id": 6,
+   "pregunta": "¿Cuál es el estado de mi trámite de convalidación?",
+   "clave": "estado del trámite",
+   "respuesta": "El estado del trámite de convalidación es: en revisión.",
+   "usa_herramienta": true
+  },
+  {
+   "id": 7,
+   "pregunta": "¿Cuál es el horario de la biblioteca?",
+   "clave": "horario de la biblioteca",
+   "respuesta": "El horario de la biblioteca es de lunes a viernes de 8:00 a 21:00.",
+   "usa_herramienta": false
+  },
+  {
+   "id": 8,
+   "pregunta": "¿Cómo inscribo mi práctica profesional?",
+   "clave": "práctica profesional",
+   "respuesta": "Inscribe tu práctica profesional con el coordinador de carrera y sube el formulario al portal.",
+   "usa_herramienta": false
+  },
+  {
+   "id": 9,
+   "pregunta": "¿Cómo me conecto al wifi del campus?",
+   "clave": "wifi del campus",
+   "respuesta": "Para el wifi del campus conéctate a Campus-Wifi con tus credenciales institucionales.",
+   "usa_herramienta": false
+  },
+  {
+   "id": 10,
+   "pregunta": "¿Cómo pago mi arancel en cuotas?",
+   "clave": "arancel en cuotas",
+   "respuesta": "Puedes pagar tu arancel en cuotas desde Pagos en Línea, hasta en 10 cuotas.",
+   "usa_herramienta": false
+  }
+ ],
+ "ambiguas": [
+  {
+   "consulta": "horario del campus",
+   "clave": "horario de la biblioteca"
+  },
+  {
+   "consulta": "estado de beca alimentación",
+   "clave": "beca de alimentación"
+  },
+  {
+   "consulta": "solicito horario de clases",
+   "clave": "horario de clases"
+  },
+  {
+   "consulta": "práctica profesional matrícula",
+   "clave": "práctica profesional"
+  },
+  {
+   "consulta": "certificado alumno matrícula",
+   "clave": "certificado de alumno regular"
+  },
+  {
+   "consulta": "wifi biblioteca campus",
+   "clave": "wifi del campus"
+  }
+ ],
+ "prefijos_pii": [
+  "Soy 12.345.678-5 y mi correo es ana.perez@correo.cl. ",
+  "Mi RUT 9.876.543-K, teléfono +56 9 8765 4321. ",
+  "Escribo desde juan@mail.com, rut 15.111.222-3. ",
+  "Mi tarjeta 4111 1111 1111 1111 ¿puedo pagar con ella? ",
+  "Contacto +56912345678 / 11.222.333-4. ",
+  "Mi correo maria.g@uni.cl: "
+ ]
+}
